@@ -39,6 +39,8 @@ exports.loginUser = function (req, res) {
   });
   User.findOne({'username': user.username, 'password': user.password}, function (err, res) {
     if(err) return console.error(err);
+    req.session.isLoggedIn = "true";
+    req.session.isAdmin = User.userLevel;
     redirect("/home");
   });
 };
@@ -50,6 +52,7 @@ exports.home = function (req, res) {
 };
 
 exports.logout = function (req, res) {
+  req.session.destroy();
   res.redirect("/");
 };
 
@@ -75,16 +78,26 @@ exports.createUser = function (req, res) {
     console.log(req.body.username + ' added');
   });
   res.redirect('/home');
+
+  req.session.isLoggedIn = "true";
+  req.session.isAdmin = user.userLevel;
 };
 
 exports.edit = function (req, res) {
-  User.findById(req.params.id, function (err, user) {
-    if (err) return console.error(err);
-    res.render('edit', {
-      title: 'Edit User',
-      user: user
+  if (req.session.isLoggedIn == "true") {
+    User.findById(req.params.id, function (err, user) {
+      if (err) return console.error(err);
+      res.render('edit', {
+        title: 'Edit User',
+        user: user
+      });
     });
-  });
+  }
+  else {
+    res.render('login', {
+      title: 'Login'
+    });
+  }
 };
 
 exports.editUser = function (req, res) {
