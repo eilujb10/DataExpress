@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  form(id='form', method='post', action='/create')
+    div
+      label(for='username') Username: 
+      input(type='text', name='username')
+    div
+      label(for='age') Age: 
+      input(type='text', name='age')
+    div
+      label(for='email') Email: 
+      input(type='text', name='email')
+    div
+      label(for='password') Password: 
+      input(type='text', name='password')
+    div
+      label(for='user_level') User Level: 
+      input(type='text', name='user_level')
+    div
+      input(type='submit', value='Create')

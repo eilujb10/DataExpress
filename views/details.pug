@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  table(class='gridtable')
+      tr
+        th Username
+        th Age
+        th Email
+        th User Level
+        th Answer #1
+        th Answer #2
+        th Answer #3
+        th 
+      each item in people
+        tr
+          td
+            a(href='/details/' + item.id) #{item.id}
+          td #{item.username}
+          td #{item.age}
+          td #{item.email}
+          td #{item.user_level}
+          td #{item.answer1}
+          td #{item.answer2}
+          td #{item.answer3}
+          td
+            a(href='/edit/' + item.id) Edit
+          td
+            a(href='/delete/' + item.id) Delete
