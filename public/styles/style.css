@@ -1,0 +1,37 @@
+/*This is a test.*/
+
+html {
+  background:#515151;
+}
+
+body {
+  background: #efb;
+  padding: 10px;
+  padding-bottom: 25px;
+}
+
+.link {
+  margin-top: 25px;
+}
+
+a:link {
+  color: #fff;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 25px;
+  background-color: #33f;
+  color: #fff;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #fff;  
+}
+
+a:hover {
+  color: cyan;
+}
+
+#form {
+  
+}
